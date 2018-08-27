@@ -15,9 +15,13 @@ const Update = (router) => {
       res.send("Must provide an expense with updates to be made; none provided.");
   
     try {
-      console.log(updatedExpense);
-      await Expense.findByIdAndUpdate(_id, updatedExpense);
-      res.status(200).send("Updated expense with _id " + _id);
+
+      let doc = await Expense.findByIdAndUpdate(_id, updatedExpense);
+      res.status(200).json({
+        message: "Expense successfully updated.",
+        _id: doc._id,
+        updatedFields: Object.keys(updatedExpense)
+      });
   
     } catch (error) {
   

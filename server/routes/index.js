@@ -6,6 +6,8 @@ const Routes = (router) => {
 
   router.use("/expenses", expenses);
 
+  // bills
+
 }
 
 module.exports = Routes;

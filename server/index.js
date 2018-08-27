@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const { PORT = 3000 } = process.env;
+const { y } = require("./utils/console");
 
 // Initiate Database Connection.
 require("./db")();

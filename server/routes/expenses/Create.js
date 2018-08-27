@@ -1,8 +1,21 @@
 const Expense = require("../../db/schemas/ExpenseEntry.js");
 
-/** @method POST */
+/**
+ * @name Create
+ * @param {Object} router
+ * @description
+ * Catalog of POST routes
+ * for /expenses endpoint
+ */
 const Create = (router) => {
 
+  /**
+   * @method POST
+   * @name /expenses
+   * @description
+   * Creates and saves a new
+   * Entry Document into the database.
+   */
   // /expenses
   router.post("/", async (req, res) => {
     // Grab payload from request
@@ -12,8 +25,11 @@ const Create = (router) => {
     // notify client of outcome
     try {
   
-      await Expense.create(expensePayload);
-      res.status(200).send("Expense successfully recorded.");
+      let doc = await Expense.create(expensePayload);
+      res.status(200).json({
+        message: "Expense successfully recorded.",
+        _id: doc._id
+      });
   
     } catch (error) {
   
