@@ -4,10 +4,8 @@ const { PORT = 3000 } = process.env;
 // Initiate Database Connection.
 require("./db")();
 
-// Initialize Application Router
-// and attach business logic.
-// See ./routes/index.js for
-// catalog of routes.
+// Initialize Application Router and attach business logic.
+// See ./routes/index.js for catalog of routes.
 const appRouter = require("express").Router();
 require("./routes")(appRouter);
 app.use(Router);
