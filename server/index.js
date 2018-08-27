@@ -1,5 +1,4 @@
-const express = require("express");
-const app = express();
+const app = require("express")();
 const { PORT = 3000 } = process.env;
 const { y } = require("./utils/console");
 
