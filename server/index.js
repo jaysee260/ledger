@@ -8,10 +8,10 @@ require("./db")();
 // See ./routes/index.js for catalog of routes.
 const appRouter = require("express").Router();
 require("./routes")(appRouter);
-app.use(Router);
+app.use(appRouter);
 
 // Start application.
 app.listen(PORT, () => {
-  console.log("Application running on PORT " + PORT + ".");
-  console.log("Use Ctrl + C to end process.");
+  console.log("Application running on http://localhost:%s", PORT);
+  console.log("Hold Ctrl + C to end process.");
 })
