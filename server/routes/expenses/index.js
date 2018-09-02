@@ -12,7 +12,7 @@ require("./Delete")(Delete);
 
 const expenses = (router) => {
   // Route middleware
-  router.use(bodyParser({ extended: true }));
+  router.use(bodyParser.urlencoded({ extended: true }));
   router.use(bodyParser.json());
 
   /** @method POST */
