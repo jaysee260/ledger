@@ -10,7 +10,7 @@ const expenses = require("express").Router();
 require("./expenses")(expenses);
 require("./home")(home);
 
-// Index of Routes
+// Routes Index
 const Routes = (router) => {
 
   // /
