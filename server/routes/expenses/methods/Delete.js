@@ -1,4 +1,4 @@
-const Expense = require("../../db/schemas/ExpenseEntry.js");
+const Expense = require("../../../db/schemas/ExpenseEntry.js");
 
 /** @method DELETE */
 const Delete = (router) => {

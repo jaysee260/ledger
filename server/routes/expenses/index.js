@@ -5,10 +5,10 @@ const Read      = require("express").Router();
 const Update    = require("express").Router();
 const Delete    = require("express").Router();
 
-require("./Create")(Create);
-require("./Read")(Read);
-require("./Update")(Update);
-require("./Delete")(Delete);
+require("./methods/Create")(Create);
+require("./methods/Read")(Read);
+require("./methods/Update")(Update);
+require("./methods/Delete")(Delete);
 
 const expenses = (router) => {
   // Route middleware
