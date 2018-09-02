@@ -4,11 +4,12 @@ const { g, r, gr } = require("../utils/console");
 
 // If no URL is provided, default connection
 // to localhost
-module.exports = (URL = local) => {
+module.exports = (url = local) => {
 
   mongoose.Promise = global.Promise;
 
-  mongoose.connect(URL, { useNewUrlParser: true });
+  const opts = { useNewUrlParser: true };
+  mongoose.connect(url, opts);
 
   const db = mongoose.connection;
 
