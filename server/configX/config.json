@@ -1,0 +1,13 @@
+{
+  "db": {
+    "local": {
+      "url": "mongodb://localhost/ledger"
+    },
+    "cloud": {
+      "username": "",
+      "password": "",
+      "dbname": "",
+      "uri": "mongodb://<dbuser>:<dbpassword>@ds141932.mlab.com:41932/<dbname>"
+    }
+  }
+}
