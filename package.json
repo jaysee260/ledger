@@ -4,8 +4,8 @@
   "description": "wip",
   "main": "./server/index.js",
   "scripts": {
-    "start": "NODE_ENV=prod node ./server",
-    "dev": "NODE_ENV=dev nodemon ./server"
+    "start": "NODE_ENV=prod DB=local node ./server",
+    "dev": "NODE_ENV=dev DB=cloud nodemon ./server"
   },
   "author": "Juan C. Gonzalez",
   "license": "MIT",
