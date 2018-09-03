@@ -1,13 +1,11 @@
 const home = (router) => {
 
   router.get("/", (req, res) => {
-    const homeMessage = `
-      <code>
+    const message =`
         Welcome. <br />
         Go <a href="/expenses">here</a> to view all expenses.
-      </code>
     `;
-    res.send(homeMessage);
+    res.send(message);
   });
 
 }

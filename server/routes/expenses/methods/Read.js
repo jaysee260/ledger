@@ -9,6 +9,7 @@ const Read = (router) => {
 
       let expenses = await Expense.find({});
       res.status(200).json({ expenses });
+      // res.status(200).render('expenses', expenses);
 
     } catch (error) {
 

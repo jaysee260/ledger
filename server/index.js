@@ -1,4 +1,7 @@
-const app = require("express")();
+const express = require("express");
+const app = express();
+const path = require("path");
+const exphbs = require("express-handlebars");
 const { PORT: port = 3000 } = process.env;
 const { NODE_ENV: env = "dev" } = process.env;
 
@@ -7,6 +10,15 @@ if (env === "dev") {
   const logger = require("morgan");
   app.use(logger(env));
 }
+
+// const viewEngineOptions = {
+//   extname: ".hbs",
+//   defaultLayout: 'main',
+//   layoutsDir: path.join(__dirname, "views", "layouts")
+// };
+// app.engine("hbs", exphbs(viewEngineOptions));
+// app.set("views", path.join(__dirname, "views"));
+// app.set('view engine', 'hbs');
 
 // Initiate Database Connection.
 require("./db")();
