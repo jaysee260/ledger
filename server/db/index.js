@@ -1,10 +1,23 @@
 const mongoose = require("mongoose");
-const local = "mongodb://localhost/ledger";
 const { g, r, gr } = require("../utils/console");
 
-// If no URL is provided, default connection
-// to localhost
-module.exports = (url = local) => {
+// If target DB environment is not provided,
+// default connection to localhost.
+module.exports = (target = "local") => {
+  let url;
+  switch (target) {
+    case "cloud":
+      let keys = require("../config").init().db.cloud;
+      url = keys.uri
+                .replace("<dbuser>", keys.username)
+                .replace("<dbpassword>", keys.password)
+                .replace("<dbname>", keys.dbname);
+      break;
+    case "local":
+    default:
+      url = require("../config").init().db.local.url;
+      break;
+  }
 
   mongoose.Promise = global.Promise;
 
@@ -13,17 +26,18 @@ module.exports = (url = local) => {
 
   const db = mongoose.connection;
 
-  db.on("error", () => {
-    console.error(gr("An error occurred while attempting to connect to the database."));
+  db.on("error", (err) => {
+    // console.error(err);
+    console.error(gr("An error occurred while attempting to connect to the %s database."), target);
     console.error(gr("Please make sure the connection string is valid,"));
-    console.error(gr("or that your database is accepting incoming connections."));
+    console.error(gr("or that the database is accepting incoming connections."));
     console.error(r("Process ending now -- Please restart the application."));
     
     process.exit(1);
   });
 
   db.once("open", () => {
-    console.log(g("Connection to database successful."));
+    console.log(g("Connection to %s database successful."), target);
   });
 
 }

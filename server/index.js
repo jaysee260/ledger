@@ -1,6 +1,7 @@
 const app = require("express")();
 const { PORT: port = 3000 } = process.env;
 const { NODE_ENV: env = "dev" } = process.env;
+const { DB: db = "local" } = process.env;
 
 // Register development middleware.
 if (env === "dev") {
@@ -9,7 +10,7 @@ if (env === "dev") {
 }
 
 // Initiate Database Connection.
-require("./db")();
+require("./db")(db);
 
 // Initialize Application Router and attach business logic.
 // See ./routes/index.js for catalog of routes.
